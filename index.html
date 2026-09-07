@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Lucky Star Play</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #121826;
+      color: white;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 500px;
+      margin: auto;
+    }
+
+    h1 {
+      text-align: center;
+      margin-top: 20px;
+      color: #ffd54a;
+    }
+
+    .subtitle {
+      text-align: center;
+      color: #aab3c5;
+      margin: 10px 0 25px;
+    }
+
+    .card {
+      background: #202a3a;
+      border-radius: 20px;
+      padding: 20px;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+
+    .number {
+      font-size: 32px;
+      font-weight: bold;
+      color: #ffd54a;
+      margin: 15px 0;
+    }
+
+    .countdown {
+      font-size: 24px;
+      color: #8ab4f8;
+      margin-top: 10px;
+    }
+
+    button {
+      width: 100%;
+      border: none;
+      border-radius: 15px;
+      padding: 16px;
+      font-size: 17px;
+      font-weight: bold;
+      cursor: pointer;
+      background: #7c4dff;
+      color: white;
+      margin-top: 10px;
+    }
+
+    button:active {
+      transform: scale(0.98);
+    }
+
+    .section-title {
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 12px;
+    }
+
+    .winner {
+      background: #293548;
+      padding: 12px;
+      border-radius: 12px;
+      margin-top: 8px;
+      text-align: left;
+    }
+
+    .ticket {
+      color: #67e480;
+      font-size: 18px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <h1>⭐ LUCKY STAR PLAY ⭐</h1>
+    <p class="subtitle">Free Lucky Draw</p>
+
+    <div class="card">
+      <div class="section-title">🎟️ Your Lucky Number</div>
+
+      <div class="number" id="luckyNumber">
+        #-----
+      </div>
+
+      <div class="ticket">
+        My Tickets: <span id="ticketCount">0</span>
+      </div>
+
+      <button onclick="getTicket()">
+        🎰 GET FREE TICKET
+      </button>
+    </div>
+
+    <div class="card">
+      <div class="section-title">⏳ Next Lucky Draw</div>
+
+      <div class="countdown">
+        05:32:18
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="section-title">🏆 Previous Winners</div>
+
+      <div class="winner">🥇 Lucky Player #123</div>
+      <div class="winner">🥈 Lucky Player #456</div>
+      <div class="winner">🥉 Lucky Player #789</div>
+    </div>
+
+    <button onclick="inviteFriends()">
+      👥 INVITE FRIENDS
+    </button>
+
+  </div>
+
+  <script>
+    let tickets = 0;
+
+    function getTicket() {
+      tickets++;
+
+      let number = Math.floor(
+        10000 + Math.random() * 90000
+      );
+
+      document.getElementById("luckyNumber").innerText =
+        "#" + number;
+
+      document.getElementById("ticketCount").innerText =
+        tickets;
+    }
+
+    function inviteFriends() {
+      alert("Referral feature will be added soon!");
+    }
+  </script>
+
+</body>
+                                                      </html>
