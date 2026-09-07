@@ -1,168 +1,421 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Lucky Star Play</title>
+<title>Lucky Star Play</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-    }
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-    body {
-      background: #121826;
-      color: white;
-      min-height: 100vh;
-      padding: 20px;
-    }
+body {
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+    background:
+        radial-gradient(circle at top, #293761 0%, #121827 48%, #090d17 100%);
+    color: white;
+}
 
-    .container {
-      max-width: 500px;
-      margin: auto;
-    }
+.container {
+    max-width: 500px;
+    margin: auto;
+    padding: 18px 15px 40px;
+}
 
-    h1 {
-      text-align: center;
-      margin-top: 20px;
-      color: #ffd54a;
-    }
+.header {
+    text-align: center;
+    padding: 22px 10px 28px;
+}
 
-    .subtitle {
-      text-align: center;
-      color: #aab3c5;
-      margin: 10px 0 25px;
-    }
+.logo {
+    font-size: 30px;
+    font-weight: bold;
+    color: #ffd85a;
+}
 
-    .card {
-      background: #202a3a;
-      border-radius: 20px;
-      padding: 20px;
-      margin-bottom: 15px;
-      text-align: center;
-    }
+.subtitle {
+    margin-top: 8px;
+    color: #aeb7cf;
+}
 
-    .number {
-      font-size: 32px;
-      font-weight: bold;
-      color: #ffd54a;
-      margin: 15px 0;
-    }
+.card {
+    background: rgba(38, 48, 71, 0.96);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 22px;
+    padding: 22px;
+    margin-bottom: 16px;
+}
 
-    .countdown {
-      font-size: 24px;
-      color: #8ab4f8;
-      margin-top: 10px;
-    }
+.section-title {
+    text-align: center;
+    font-size: 19px;
+    font-weight: bold;
+    margin-bottom: 16px;
+}
 
-    button {
-      width: 100%;
-      border: none;
-      border-radius: 15px;
-      padding: 16px;
-      font-size: 17px;
-      font-weight: bold;
-      cursor: pointer;
-      background: #7c4dff;
-      color: white;
-      margin-top: 10px;
-    }
+.lucky-number {
+    text-align: center;
+    font-size: 42px;
+    font-weight: bold;
+    color: #ffd85a;
+    margin: 14px 0;
+}
 
-    button:active {
-      transform: scale(0.98);
-    }
+.ticket-count {
+    text-align: center;
+    font-size: 17px;
+    color: #79e09a;
+    margin-bottom: 18px;
+}
 
-    .section-title {
-      font-size: 20px;
-      font-weight: bold;
-      margin-bottom: 12px;
-    }
+button {
+    width: 100%;
+    border: none;
+    border-radius: 15px;
+    padding: 17px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    background: linear-gradient(135deg, #7045f5, #a35cff);
+}
 
-    .winner {
-      background: #293548;
-      padding: 12px;
-      border-radius: 12px;
-      margin-top: 8px;
-      text-align: left;
-    }
+button:active {
+    transform: scale(0.98);
+}
 
-    .ticket {
-      color: #67e480;
-      font-size: 18px;
-    }
-  </style>
+.countdown {
+    text-align: center;
+    font-size: 40px;
+    font-weight: bold;
+    color: #9ec5ff;
+    letter-spacing: 2px;
+}
+
+.draw-time {
+    text-align: center;
+    margin-top: 10px;
+    color: #aeb7cf;
+    font-size: 13px;
+}
+
+.winner {
+    background: rgba(255,255,255,0.06);
+    padding: 15px;
+    border-radius: 13px;
+    margin-top: 10px;
+}
+
+.invite-btn {
+    margin-top: 4px;
+}
+
+.footer {
+    text-align: center;
+    margin-top: 24px;
+    color: #69728c;
+    font-size: 13px;
+}
+</style>
 </head>
 
 <body>
 
-  <div class="container">
+<div class="container">
 
-    <h1>⭐ LUCKY STAR PLAY ⭐</h1>
-    <p class="subtitle">Free Lucky Draw</p>
-
-    <div class="card">
-      <div class="section-title">🎟️ Your Lucky Number</div>
-
-      <div class="number" id="luckyNumber">
-        #-----
-      </div>
-
-      <div class="ticket">
-        My Tickets: <span id="ticketCount">0</span>
-      </div>
-
-      <button onclick="getTicket()">
-        🎰 GET FREE TICKET
-      </button>
+    <div class="header">
+        <div class="logo">⭐ LUCKY STAR PLAY ⭐</div>
+        <div class="subtitle">Free Lucky Draw</div>
     </div>
 
     <div class="card">
-      <div class="section-title">⏳ Next Lucky Draw</div>
+        <div class="section-title">🎟️ Your Lucky Number</div>
 
-      <div class="countdown">
-        05:32:18
-      </div>
+        <div class="lucky-number" id="luckyNumber">#-----</div>
+
+        <div class="ticket-count">
+            🎫 My Tickets:
+            <span id="ticketCount">0</span>
+        </div>
+
+        <button id="ticketButton" onclick="getTicket()">
+            🎰 GET FREE TICKET
+        </button>
     </div>
 
     <div class="card">
-      <div class="section-title">🏆 Previous Winners</div>
+        <div class="section-title">⏳ Next Lucky Draw</div>
 
-      <div class="winner">🥇 Lucky Player #123</div>
-      <div class="winner">🥈 Lucky Player #456</div>
-      <div class="winner">🥉 Lucky Player #789</div>
+        <div class="countdown" id="countdown">
+            00:00:00
+        </div>
+
+        <div class="draw-time">
+            Draws daily at 12 AM • 6 AM • 12 PM • 6 PM (IST)
+        </div>
     </div>
 
-    <button onclick="inviteFriends()">
-      👥 INVITE FRIENDS
+    <div class="card">
+        <div class="section-title">🏆 Previous Winners</div>
+
+        <div class="winner" id="winner1">🥇 Lucky Player #123</div>
+        <div class="winner">🥈 Lucky Player #456</div>
+        <div class="winner">🥉 Lucky Player #789</div>
+    </div>
+
+    <button class="invite-btn" onclick="inviteFriends()">
+        👥 INVITE FRIENDS
     </button>
 
-  </div>
+    <div class="footer">
+        ⭐ Lucky Star Play • Free Lucky Draw
+    </div>
 
-  <script>
-    let tickets = 0;
+</div>
 
-    function getTicket() {
-      tickets++;
+<script>
 
-      let number = Math.floor(
-        10000 + Math.random() * 90000
-      );
+/* =========================
+   TICKET DATA
+========================= */
 
-      document.getElementById("luckyNumber").innerText =
-        "#" + number;
+let tickets =
+    Number(localStorage.getItem("luckyTickets")) || 0;
 
-      document.getElementById("ticketCount").innerText =
+let luckyNumber =
+    localStorage.getItem("luckyNumber") || "";
+
+
+/* =========================
+   LOAD SAVED DATA
+========================= */
+
+function loadUserData() {
+
+    document.getElementById("ticketCount").innerText =
         tickets;
+
+    if (luckyNumber) {
+
+        document.getElementById("luckyNumber").innerText =
+            "#" + luckyNumber;
+
+        document.getElementById("ticketButton").innerText =
+            "🎟️ TICKET RECEIVED";
+
+        document.getElementById("ticketButton").disabled =
+            true;
+    }
+}
+
+
+/* =========================
+   GET FREE TICKET
+========================= */
+
+function getTicket() {
+
+    if (tickets >= 1) {
+        alert("You already received your free ticket!");
+        return;
     }
 
-    function inviteFriends() {
-      alert("Referral feature will be added soon!");
+    tickets = 1;
+
+    luckyNumber =
+        Math.floor(
+            10000 + Math.random() * 90000
+        );
+
+    localStorage.setItem(
+        "luckyTickets",
+        tickets
+    );
+
+    localStorage.setItem(
+        "luckyNumber",
+        luckyNumber
+    );
+
+    document.getElementById("ticketCount").innerText =
+        tickets;
+
+    document.getElementById("luckyNumber").innerText =
+        "#" + luckyNumber;
+
+    document.getElementById("ticketButton").innerText =
+        "🎟️ TICKET RECEIVED";
+
+    document.getElementById("ticketButton").disabled =
+        true;
+}
+
+
+/* =========================
+   IST COUNTDOWN
+========================= */
+
+function getISTTime() {
+
+    const now = new Date();
+
+    const istString =
+        now.toLocaleString(
+            "en-US",
+            {
+                timeZone: "Asia/Kolkata"
+            }
+        );
+
+    return new Date(istString);
+}
+
+
+function updateCountdown() {
+
+    const istNow =
+        getISTTime();
+
+    const nextDraw =
+        new Date(istNow);
+
+    const hour =
+        istNow.getHours();
+
+    let drawHour;
+
+    if (hour < 6) {
+        drawHour = 6;
     }
-  </script>
+    else if (hour < 12) {
+        drawHour = 12;
+    }
+    else if (hour < 18) {
+        drawHour = 18;
+    }
+    else {
+        drawHour = 24;
+    }
+
+    if (drawHour === 24) {
+
+        nextDraw.setDate(
+            nextDraw.getDate() + 1
+        );
+
+        nextDraw.setHours(
+            0, 0, 0, 0
+        );
+
+    }
+    else {
+
+        nextDraw.setHours(
+            drawHour,
+            0,
+            0,
+            0
+        );
+    }
+
+
+    let distance =
+        nextDraw.getTime() -
+        istNow.getTime();
+
+
+    if (distance < 0) {
+
+        distance = 0;
+    }
+
+
+    const hours =
+        Math.floor(
+            distance /
+            (1000 * 60 * 60)
+        );
+
+    const minutes =
+        Math.floor(
+            (
+                distance %
+                (1000 * 60 * 60)
+            ) /
+            (1000 * 60)
+        );
+
+    const seconds =
+        Math.floor(
+            (
+                distance %
+                (1000 * 60)
+            ) /
+            1000
+        );
+
+
+    document.getElementById(
+        "countdown"
+    ).innerText =
+
+        String(hours).padStart(2, "0") +
+        ":" +
+        String(minutes).padStart(2, "0") +
+        ":" +
+        String(seconds).padStart(2, "0");
+}
+
+
+/* =========================
+   INVITE
+========================= */
+
+function inviteFriends() {
+
+    const message =
+        "⭐ Join Lucky Star Play and try your luck!";
+
+    if (navigator.share) {
+
+        navigator.share({
+            title: "Lucky Star Play",
+            text: message,
+            url: window.location.href
+        });
+
+    }
+    else {
+
+        navigator.clipboard.writeText(
+            window.location.href
+        );
+
+        alert(
+            "Invite link copied!"
+        );
+    }
+}
+
+
+/* =========================
+   START APP
+========================= */
+
+loadUserData();
+
+updateCountdown();
+
+setInterval(
+    updateCountdown,
+    1000
+);
+
+</script>
 
 </body>
-                                                      </html>
+</html>
